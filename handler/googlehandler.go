@@ -90,12 +90,12 @@ func GoogleHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			if resp.StatusCode != 200 {
 				result, _ := json.Marshal(ResultBody{
-					Text:         "Remote Translate Server Return StatusCode:" + string(resp.StatusCode),
+					Text:         "Remote Translate Server Return StatusCode:" + strconv.Itoa(resp.StatusCode),
 					From:         pjb.Source,
 					To:           pjb.Target,
 					Result:       "Error",
 					ErrorCode:    "1",
-					ErrorMessage: "Remote Translate Server Return StatusCode:" + string(resp.StatusCode),
+					ErrorMessage: "Remote Translate Server Return StatusCode:" + strconv.Itoa(resp.StatusCode),
 				})
 				io.WriteString(w, string(result))
 				return
